@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="=UTF-8">
+    <meta charset="UTF-8" />
     <title>Todo</title>
-    <link rel="stylesheet" href="css/normalize.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div id="wrapper">
-      <h1>MyTodo</h1>
-      <!--Tab Begin-->
+      <h1>My Todo</h1>
+      <!-- タブ Begin -->
       <div id="tab">
         <div class="tab-list">
-          <button data-target="inbox">inbox</button>
+          <button data-target="inbox">インボックス</button>
         </div>
         <div class="tab-list">
-          <button data-target="done">完了タスク</button>
+          <button data-target="done">完了したタスク</button>
         </div>
         <div class="tab-list">
           <select id="sort-menu">
             <option value="created-desc">登録日↓</option>
             <option value="created-asc">登録日↑</option>
-            <option value="priority-desc">優先度↑</option>
+            <option value="priority-desc">優先度↓</option>
             <option value="priority-asc">優先度↑</option>
           </select>
         </div>
       </div>
-      <!--Tab End-->
-      <!--TodoList Begin-->
+      <!-- タブ End -->
+      <!-- Todoリスト Begin -->
       <table id="todo-table">
         <thead>
           <tr>
@@ -42,9 +42,9 @@
         <tbody id="todo-main">
           <tr></tr>
         </tbody>
-      </table>
-      <!--TodoList End-->
-      <!--Todo Input Form Begin-->
+        </table>
+        <!-- Todoリスト End -->
+      <!-- Todo入力フォーム Begin -->
       <form id="input-form">
         <div class="input-text">
           <label for="input-text">Todo</label>
@@ -53,13 +53,13 @@
             id="input-text"
             name="todo-text"
             placeholder="牛乳を買う"
-            />
+          />
         </div>
         <div class="submit">
           <button type="submit">登録</button>
         </div>
       </form>
-      <!--Todo Input Form End-->
+      <!-- Todo入力フォーム End -->
     </div>
     <script src="js/script.js"></script>
   </body>
