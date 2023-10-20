@@ -1,8 +1,8 @@
 const todoList = []
 let inputForm, todoMain, tabButton, sortMenu
 
-/** Todo1個単位のHTML文字列を構成する */
-function createTodoHtmlString(todo){
+/** Todo一個単位のHTML文字列を生成する */
+function createTodoHtmlString(todo) {
   let htmlString = ""
   const editType = todo.isEdit ? "editFixed" : "edit"
   const editButtonLabel = todo.isEdit ? "編集完了" : "編集"
@@ -17,13 +17,13 @@ function createTodoHtmlString(todo){
   } else {
     // ユーザは情報を見るだけなのでテキストとして表示すればOK
     todoTextCell = '<td class="cell-text">' + todo.text + "</td>"
-    priorityCell = '<td class="cell-priority>"' + todo.priority + "</td>"
+    priorityCell = '<td class="cell-priority">' + todo.priority + "</td>"
   }
   htmlString += '<tr id="' + todo.id + '">'
-  htmlString += '<td class="cell-edit-button"><button data-type"' + editType + '">' + editButtonLabel + "</button></td>"
+  htmlString += '<td class="cell-edit-button"><button data-type="' + editType + '">' + editButtonLabel + "</button></td>"
   htmlString += todoTextCell
   htmlString += '<td class="cell-created-at">' + todo.createdAt + "</td>"
-  htmlString += todo.priorityCell
+  htmlString += priorityCell
   htmlString += '<td class="cell-done">'
   htmlString += '<button data-type="' + doneType + '">'
   htmlString += doneButtonLabel
@@ -33,17 +33,17 @@ function createTodoHtmlString(todo){
 }
 
 /** TodoListの描画を更新する */
-function updateTodoList(){
+function updateTodoList() {
   let htmlStrings = ""
   todoList.forEach(todo => {
-    htmlString += createTodoHtmlString(todo)
+    htmlStrings += createTodoHtmlString(todo)
     todoMain.innerHTML = htmlStrings
   })
   todoMain.innerHTML = htmlStrings
 }
 
 /** todoListを追加する */
-function addTodo(todoObj){
+function addTodo(todoObj) {
   todoObj.id = "todo-" + (todoList.length + 1)
   todoObj.createdAt = new Date().toLocaleString()
   todoObj.priority = 3
@@ -55,7 +55,7 @@ function addTodo(todoObj){
 }
 
 /** Todoを登録する処理 */
-function handleSubmit(event){
+function handleSubmit(event) {
   event.preventDefault()
   const todoObj = {
     text: inputForm["input-text"].value
@@ -64,7 +64,7 @@ function handleSubmit(event){
 }
 
 /** DOMを変数に登録する */
-function registerDOM(){
+function registerDOM() {
   inputForm = document.querySelector("#input-form")
   todoMain = document.querySelector("#todo-main")
   tabButton = document.querySelector("#tab").querySelectorAll("button")
@@ -72,12 +72,12 @@ function registerDOM(){
 }
 
 /** DOMにイベントを設定する */
-function bindEvents(){
-  inputForm.addEventListener("submit", () => handleSubmit())
+function bindEvents() {
+  inputForm.addEventListener("submit", event => handleSubmit(event))
 }
 
 /** 初期化 */
-function initialize(){
+function initialize() {
   registerDOM()
   bindEvents()
   updateTodoList()
